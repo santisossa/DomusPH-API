@@ -2,3 +2,15 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/domusph/public_html/webApp/domusph-api/
+    - /bin/cp -R src $DEPLOYPATH/src
+    - /bin/cp -R templates $DEPLOYPATH/templates
+    - /bin/cp -R public $DEPLOYPATH/public
+    - /bin/cp -R logs $DEPLOYPATH/logs
+    - /bin/cp -R tests $DEPLOYPATH/tests
+    - /bin/cp .gitignore $DEPLOYPATH
+    - /bin/cp composer.json $DEPLOYPATH
+    - /bin/cp composer.lock $DEPLOYPATH
+    - /bin/cp CONTRIBUTING.md $DEPLOYPATH
+    - /bin/cp docker-compose.yml $DEPLOYPATH
+    - /bin/cp phpunit.xml $DEPLOYPATH
+    - /bin/cp README.md $DEPLOYPATH
