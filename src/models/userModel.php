@@ -2,22 +2,24 @@
 
 namespace Src\Models;
 
-use Psr\Log\LoggerInterface;
-use Illuminate\Database\Query\Builder;
-use Src\Lib\Response;
+use Illuminate\Database\Eloquent\Model;
 
-class UserModel
+class UserModel extends Model
 {
-    private $logger;
-    protected $table;
-    private $response;
+    protected $table = "usuarios";
+    public $timestamps = false;
+    protected $primaryKey = 'documento';
+    protected $fillable = [
+        'documento',
+        'nombre',
+        'apellido',
+        'correo',
+        'contraseña',
+        'edad',
+        'codRol',
+        'codPropiedad'
+    ];
 
-    public function __construct(LoggerInterface $logger, Builder $table) 
-    {
-        $this->logger = $logger;
-        $this->table = $table;
-        $this->response = new Response();
-    }
 
     public function userRegister($data)
     {
@@ -26,17 +28,4 @@ class UserModel
 
         return $this->response->setResponse(true, "Usuario registrado Correctamente",null);
     }
-
-   /*  public  function validateDocument($documento)
-    {
-        $sqlDocumento = $this->table->where('documento', '=', $documento)->get()->toArray();
-        var_dump($sqlDocumento);
-
-        exit();
-
-
-        return $this->response->setResponse(true, "Usuario registrado Correctamente",null);
-    }
- */
-
 }

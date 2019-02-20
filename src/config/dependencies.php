@@ -27,9 +27,3 @@ $container['db'] = function ($container) {
     return $capsule;
 };
 
-// Models
-$container['models'] = function($c){
-    return (object)[
-        'test' => new Src\Models\Prueba()
-    ];
-};

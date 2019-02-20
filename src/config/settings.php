@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/env.php';
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
@@ -11,19 +12,19 @@ return [
 
         // Database conection
         'db' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'cineworld',
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
+            'driver' => DATABASE['driver'] ?? 'my-driver',
+            'host' => DATABASE['host'] ?? 'my-host',
+            'database' => DATABASE['database' ?? 'my-database'],
+            'username' => DATABASE['username'] ?? 'my-username',
+            'password' => DATABASE['password'] ?? 'my-password',
+            'charset' => DATABASE['charset'] ??'utf8',
+            'collation' => DATABASE['collation'] ??'utf8_unicode_ci',
+            'prefix' => DATABASE['prefix'] ??'',
         ],
 
         // Monolog settings
         'logger' => [
-            'name' => 'slim-app',
+            'name' => 'domusph-api',
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],

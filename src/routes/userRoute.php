@@ -1,23 +1,32 @@
 
 <?php
-use Src\Lib\Auth,
-    Src\Lib\Response,
-    Src\Validation\UserValidation;
+
+use Src\Controllers\UserController;
 
 $app->group('/users/', function () {
-    $this->get('/[{name}]', function (Request $request, Response $response, array $args) {
-        // Sample log message
-        $this->logger->info("DomusPH-API '/' users");
     
-        // Render index view
-        return $this->renderer->render($response, 'index.phtml', $args);
-    });
     $this->post('register', function ($req, $res, $args) {
-
+        $users = new UserController($this->db);
+        $user = json_encode($req->getParsedBody());
+        $this->logger->info("user created / {$user}");
         return $res
             ->withHeader('Content-type', 'application/json')
-            ->write(
-                json_encode($this->models->users->userRegister($req->getParsedBody()))
-            );
+            ->write($users->insertUser($req->getParsedBody()));
+    });
+
+    $this->get('getUsers', function ($req, $res, $args) {
+        $users = new UserController($this->db);
+        $this->logger->info("getUsers / {$users->getUsers()}");
+        return $res
+            ->withHeader('Content-type', 'application/json')
+            ->write($users->getUsers());
+    });
+
+    $this->post('createTableUsers', function ($req, $res, $args) {
+        $users = new UserController($this->db);
+        $this->logger->info("se creo la tabla users");
+        return $res
+            ->withHeader('Content-type', 'application/json')
+            ->write($users->createTableUsers($req->getParsedBody()));
     });
 });

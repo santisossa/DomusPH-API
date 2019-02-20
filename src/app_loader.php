@@ -6,6 +6,7 @@ $folders = [
     'middleware',
     'models',
     'routes',
+    'controllers',
     'validations'
 ];
 

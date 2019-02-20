@@ -1,3 +1,5 @@
 /vendor/
+/.vscode/
 /logs/*
 !/logs/README.md
+notes.txt
