@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/domusph/public_html/webApp/domusph-api
+    - export DEPLOYPATH=/home/domusph/public_html/webApp/domusph-api/
