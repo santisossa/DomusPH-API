@@ -14,7 +14,7 @@ return [
         'db' => [
             'driver' => DATABASE['driver'] ?? 'my-driver',
             'host' => DATABASE['host'] ?? 'my-host',
-            'database' => DATABASE['database' ?? 'my-database'],
+            'database' => DATABASE['database'] ?? 'my-database',
             'username' => DATABASE['username'] ?? 'my-username',
             'password' => DATABASE['password'] ?? 'my-password',
             'charset' => DATABASE['charset'] ??'utf8',

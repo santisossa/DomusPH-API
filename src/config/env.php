@@ -2,10 +2,10 @@
 
 define('DATABASE', [
     'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'domusph_domusph',
-    'username' => 'domusph_admin',
-    'password' => 'Dc@{$~w*$aj_',
+    'host' => '127.0.0.1',
+    'database' => 'domusph',
+    'username' => 'root',
+    'password' => '',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => '',

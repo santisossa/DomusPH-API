@@ -6,6 +6,9 @@ use Src\Controllers\UserController;
 $app->group('/users/', function () {
     
     $this->post('register', function ($req, $res, $args) {
+
+        var_dump($req->getParsedBody());
+        exit;
         $users = new UserController($this->db);
         $user = json_encode($req->getParsedBody());
         $this->logger->info("user created / {$user}");
@@ -15,6 +18,7 @@ $app->group('/users/', function () {
     });
 
     $this->get('getUsers', function ($req, $res, $args) {
+
         $users = new UserController($this->db);
         $this->logger->info("getUsers / {$users->getUsers()}");
         return $res
@@ -23,6 +27,7 @@ $app->group('/users/', function () {
     });
 
     $this->post('createTableUsers', function ($req, $res, $args) {
+
         $users = new UserController($this->db);
         $this->logger->info("se creo la tabla users");
         return $res
